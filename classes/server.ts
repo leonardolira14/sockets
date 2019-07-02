@@ -32,8 +32,10 @@ export default class Server {
         this.io.on('connection',cliente=>{
             console.log("cliente conectado");
             //desconectar
-            mi_socket.desconectar(cliente);
-            mi_socket.loginWS(cliente);
+            mi_socket.desconectar(cliente,this.io);
+            mi_socket.loginWS(cliente,this.io);
+            mi_socket.mandarsms(cliente,this.io);
+            mi_socket.respuestasms(cliente,this.io);
         })
     }
     start(callback:()=>void){
